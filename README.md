@@ -8,7 +8,7 @@ This repository develops the multi-tenant document knowledge assistant described
 - [Architecture overview](docs/architecture/overview.md), [container view](docs/architecture/containers.md), [ingestion flow](docs/architecture/ingestion-sequence.md), [query flow](docs/architecture/online-query-sequence.md), [deployment](docs/architecture/deployment.md), and [threat model](docs/architecture/threat-model.md)
 - [API and event contracts](docs/contracts/README.md) with Pydantic models in `packages/contracts/`
 - [Monorepo structure and ownership](docs/architecture/repository-structure.md)
-- Spec Kit feature records in `specs/001-rag-hld/` and `specs/002-product-contracts-structure/`
+- [Phase 4 local development quickstart](docs/runbooks/phase4-local-development.md)
+- Spec Kit feature records in `specs/001-rag-hld/`, `specs/002-product-contracts-structure/`, and `specs/003-phase4-vertical-slice/`
 
-The app/package READMEs are structural ownership markers, not runnable services. SLOs are provisional. No cloud resources have been provisioned; Phase 4 is the first executable vertical slice.
-
+The Phase 4 PDF-to-cited-answer path is runnable locally with development-only identity and deterministic mock models. Other app/package READMEs remain structural markers. SLOs are provisional, and no cloud resources have been provisioned.

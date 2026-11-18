@@ -22,18 +22,18 @@ sequenceDiagram
     Web->>IdP: Authenticate
     IdP-->>Web: Signed identity token
     Web->>API: Request upload authorization (token, filename, size, media type)
-    API->>API: Verify identity; resolve tenant and role
+    API->>API: Verify identity and resolve tenant and role
     API->>API: Validate allowed type, size, and upload policy
     API->>DB: Create document version and queued upload record
     API-->>Web: Document ID + short-lived single-object upload URL
     Web->>S3: PUT original to tenant-scoped quarantine key
     S3-->>Web: Upload result
     Web->>API: Complete upload (document ID, object version/checksum)
-    API->>API: Re-authorize tenant; validate completion/idempotency
+    API->>API: Re-authorize tenant and validate completion/idempotency
     API->>S3: Verify object existence, size, metadata, and checksum
     API->>Q: Enqueue document-version job (identifier only)
     API->>DB: Persist job queued state and idempotency key
-    API-->>Web: Accepted; return ingestion status resource
+    API-->>Web: Accepted - return ingestion status resource
 
     Q->>Worker: Deliver job (at-least-once)
     Worker->>DB: Claim job using idempotent transition

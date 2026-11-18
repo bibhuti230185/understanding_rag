@@ -1,5 +1,14 @@
 # Web Application
 
-Target: React and TypeScript client. Feature ownership includes auth, documents, ingestion status, chat, citations, feedback, admin, and evaluations. Use generated API types from `packages/contracts`; isolate SSE parsing in the streaming client. Show explicit loading, empty, error, and access-denied states.
+React/TypeScript client for the Phase 4 PDF upload, ingestion status, conversation, streamed answer, and citation path.
 
-**Status**: Scaffold only. Executable web app and dependency manifests begin in Phase 4.
+## Run
+
+```powershell
+npm install
+npm run dev
+```
+
+The app runs at `http://localhost:5173` and calls the local API at `http://localhost:8000`. Configure `VITE_API_BASE_URL` and `VITE_DEV_BEARER_TOKEN` in an ignored `.env.local` only when changing local defaults.
+
+The sign-in indicator is a development placeholder, not authentication. Use only with the local development API and do not expose it to untrusted networks.

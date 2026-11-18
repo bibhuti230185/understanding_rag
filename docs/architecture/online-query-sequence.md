@@ -20,7 +20,7 @@ sequenceDiagram
     Web->>IdP: Obtain/refresh signed identity token
     IdP-->>Web: Signed identity token
     Web->>API: POST question with conversation ID and token
-    API->>API: Verify token; resolve tenant, user, and role
+    API->>API: Verify token and resolve tenant, user, and role
     API->>DB: Authorize conversation and load permitted scope
     DB-->>API: Tenant-scoped conversation and policy
     API->>DB: Persist user message and request/correlation IDs
@@ -37,9 +37,9 @@ sequenceDiagram
         Rank-->>Graph: Bounded evidence context
         Graph->>Cache: Store safe result using tenant-scoped key and TTL
     end
-    Graph->>Graph: Build prompt; mark retrieved text as untrusted evidence
+    Graph->>Graph: Build prompt and mark retrieved text as untrusted evidence
     Graph->>LLM: Generate answer with citation requirements
-    Note over Graph,LLM: Generate a draft; keep token deltas server-side until grounding and citation checks finish
+    Note over Graph,LLM: Generate a draft and keep token deltas server-side until grounding and citation checks finish
     loop Answer tokens
         LLM-->>Graph: Draft token/event
         Graph->>Graph: Buffer draft and collect citation references
@@ -48,7 +48,7 @@ sequenceDiagram
     alt Sufficient authorized evidence and valid citations
         Graph-->>API: Validated answer, citations, usage, and trace metadata
     else No sufficient evidence or invalid citations
-        Graph-->>API: Insufficient-evidence response; discard draft
+        Graph-->>API: Insufficient-evidence response and discard draft
     end
     API->>DB: Persist assistant message and citations
     API->>Obs: Emit redacted trace, latency, usage, model, and outcome
