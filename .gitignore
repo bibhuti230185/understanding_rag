@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE and local workspace state
+.idea/
+
+# Spec Kit execution logs are local run state
+.specify/workflows/runs/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
